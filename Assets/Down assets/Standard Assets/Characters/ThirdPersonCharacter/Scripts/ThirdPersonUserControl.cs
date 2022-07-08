@@ -34,6 +34,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
+
+            // 마우스 커서 화면 밖으로 나가지 않도록 가두기
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
 
@@ -42,6 +45,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            }
+
+            if( CrossPlatformInputManager.GetButtonDown("Fire1")) // Fire1 : 조이패드 파이어 버튼, 키보드 왼쪽콘트롤버튼, 마우스 왼쪽버튼
+            {
+                // 공격!!
+                m_Character.Attack();
             }
         }
 

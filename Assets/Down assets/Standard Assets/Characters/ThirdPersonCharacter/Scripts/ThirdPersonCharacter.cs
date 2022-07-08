@@ -226,5 +226,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = false;
 			}
 		}
+
+		public void Attack()
+        {
+			m_Animator.SetTrigger("attack");
+        }
 	}
 }
