@@ -33,7 +33,7 @@ namespace Defance
             {
                 _attackCol = childTrans.GetComponent<BoxCollider2D>();
 
-                //°ø°Ý Ãæµ¹Ã¼´Â ½ÃÀÛÇÒ¶§ ²¨µÐ´Ù.
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½Ð´ï¿½.
                 _attackCol.enabled = false;
             }
         }
@@ -41,19 +41,19 @@ namespace Defance
         // Update is called once per frame
         void Update()
         {
-            //rigidbody¸¦ °Çµå·Á¼­ ¾ÕÀ¸·Î ÀÌµ¿
+            //rigidbodyï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 
-            // 1.rigidbody.ADDForce ÇÔ¼öÈ£ Èû(°¡¼Óµµ)À» ÁÖ¾î¼­ ÀÌµ¿ - °¡¼Óµµ ¿îµ¿ 
+            // 1.rigidbody.ADDForce ï¿½Ô¼ï¿½È£ ï¿½ï¿½(ï¿½ï¿½ï¿½Óµï¿½)ï¿½ï¿½ ï¿½Ö¾î¼­ ï¿½Ìµï¿½ - ï¿½ï¿½ï¿½Óµï¿½ ï¿½îµ¿ 
             // _rigid.AddForce(new Vector2(10, 0));
 
-            // 2.rigidbody.velocity º¯¼ö(xÃà¸¸)¸¦ Á÷Á¢ °Çµå¸®´Â ¹æ¹ý - µî¼Óµµ ¿îµ¿
+            // 2.rigidbody.velocity ï¿½ï¿½ï¿½ï¿½(xï¿½à¸¸)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Çµå¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½Óµï¿½ ï¿½îµ¿
 
             bool isAttacking = _anim.GetBool("attack");
 
             if (isAttacking == true)
             {
                 Vector2 vel = _rigid.velocity;
-                vel.x = 0.0f;     //°ø°Ý ÁßÀÏ ¶§´Â xÃà ¼Ó·Â 0
+                vel.x = 0.0f;     //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½ ï¿½Ó·ï¿½ 0
                 _rigid.velocity = vel;
             }
 
@@ -61,7 +61,7 @@ namespace Defance
             {
                 Vector2 vel = _rigid.velocity;
 
-                vel.x = _speed;//xÃà ¼Óµµ¸¸ °­Á¦
+                vel.x = _speed;//xï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 if (_renderer.flipX == true)
                     vel.x = -1.0f * _speed;
@@ -69,13 +69,13 @@ namespace Defance
                 _rigid.velocity = vel;
             }
 
-            //¸¸ÀÏ _enemyObj°¡ null ÀÌ¸é, ´ÙÀ½ ÀûÀ» Ã£´Â´Ù!
+            //ï¿½ï¿½ï¿½ï¿½ _enemyObjï¿½ï¿½ null ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Â´ï¿½!
             _enemyObj = FindEnemy();
 
 
             if (_enemyObj != null)
             {
-                //°Å¸® Ã¼Å© ÇÔ¼ö È£Ãâ
+                //ï¿½Å¸ï¿½ Ã¼Å© ï¿½Ô¼ï¿½ È£ï¿½ï¿½
                 CheckDistance();
             }
             else
@@ -89,9 +89,9 @@ namespace Defance
         {
             GameObject enemyObj = null;
 
-            //ÀûÀ» Ã£´Â ·ÎÁ÷ ±¸Çö
+            //ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-            //Àû ¸®½ºÆ®(¹è¿­)¿¡¼­ °¡Àå «R¹øÂ° °ÍÀ» Ã£±â
+            //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½è¿­)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Rï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
             /*if (_enemyList != null && _enemyList.Length > 0)
             {
                 enemyObj = _enemyList[0];
@@ -114,15 +114,15 @@ namespace Defance
             return enemyObj;
         }
 
-        void UpdateHpBarPos()  //Ã¼·Â¹Ù°¡ Ç×»ó À¯´ÖÀ» µû¶ó ´Ù´Ïµµ·Ï À§Ä¡ ¾÷µ¥ÀÌÆ®
+        void UpdateHpBarPos()  //Ã¼ï¿½Â¹Ù°ï¿½ ï¿½×»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´Ïµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         {
-            // ÀÌ À¯´ÖÀÇ À§Ä¡¸¦ °¡Á®¿Í¼­ (¿ùµå Æ÷Áö¼Ç)
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
             Vector3 unitPos = transform.position;
 
-            //¿ùµå ÁÂÇ¥¸¦ ½ºÅ©¸°ÁÂÇ¥(UI ÁÂÇ¥)·Î º¯È¯
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½Ç¥(UI ï¿½ï¿½Ç¥)ï¿½ï¿½ ï¿½ï¿½È¯
             Vector3 screenPos = Camera.main.WorldToScreenPoint(unitPos + _hpBarOffset);
 
-            //º¯È¯µÈ ½ºÅ©¸°ÁÂÇ¥¸¦ Ã¼·Â¹ÙÀÇ rectTransform¿¡ Àû¿ë
+            //ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½ Ã¼ï¿½Â¹ï¿½ï¿½ï¿½ rectTransformï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (_hpBarTrans != null)
             {
                 _hpBarTrans.position = screenPos;
@@ -131,16 +131,16 @@ namespace Defance
 
         public void SetAttackCol(int on) // 1 - on, 0 - off
         {
-            if (_attackCol == null)  //°ø°Ý Ãæµ¹Ã¼°¡ ¾ø´Ù¸é ½ÇÇàÇÏÁö ¾Ê±â
+            if (_attackCol == null)  //ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½
                 return;
 
             if (on == 1)
             {
-                _attackCol.enabled = true;  //°ø°Ý Ãæµ¹Ã¼¸¦ ÄÒ´Ù
+                _attackCol.enabled = true;  //ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½Ò´ï¿½
             }
             if (on == 0)
             {
-                _attackCol.enabled = false; //°ø°Ý Ãæµ¹Ã¼¸¦ ²ö´Ù
+                _attackCol.enabled = false; //ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
 
@@ -150,12 +150,12 @@ namespace Defance
 
             if (_hp > 0.0f)
             {
-                //È÷Æ® ¾Ö´Ï¸ÞÀÌ¼Ç Àç»ý
+                //ï¿½ï¿½Æ® ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½
                 _anim.SetTrigger("hit");
             }
             else
             {
-                //´ÙÀÌ ¾Ö´Ï¸ÞÀÌ¼Ç Àç»ý
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½
                 _anim.SetBool("die", true);
 
                 Invoke("Disappear", 1.5f);
@@ -163,27 +163,27 @@ namespace Defance
         }
 
 
-        void CheckDistance() // °Å¸®¸¦ Ã¼Å©ÇÏ´Â ÇÔ¼ö
+        void CheckDistance() // ï¿½Å¸ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
         {
-            // ³ª¿Í Àû Ä³¸¯ÅÍ°£ÀÇ °Å¸®¸¦ °è»êÇØ¼­, ¼³Á¤µÈ °ø°Ý¹üÀ§ ¾È¿¡ µé¾î¿À¸é °ø°Ý
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-            float pos1 = transform.position.x; // ³ªÀÇ À§Ä¡
-            float pos2 = _enemyObj.transform.position.x; // ÀûÀÇ À§Ä¡
+            float pos1 = transform.position.x; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+            float pos2 = _enemyObj.transform.position.x; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
-            float distance = Mathf.Abs(pos1 - pos2); // µÎ Ä³¸¯ÅÍ °£ÀÇ °Å¸® (µÎ xÁÂÇ¥ »çÀÌÀÇ °Å¸®)
+            float distance = Mathf.Abs(pos1 - pos2); // ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ (ï¿½ï¿½ xï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½)
 
-            if (distance < _attackRange /* && _hp > 0 */) // °ø°Ý¹üÀ§ ¾È¿¡ µé¾î¿À¸é
+            if (distance < _attackRange /* && _hp > 0 */) // ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
-                //°ø°Ý
+                //ï¿½ï¿½ï¿½ï¿½
                 _anim.SetBool("attack", true);
 
-                //µ¥¹ÌÁö Ã³¸®
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
                 //Unit enemyUnit = _enemyObj.GetComponent<Unit>();
                 //enemyUnit.DoDamage(10);
             }
-            else  //°ø°Ý ¹üÀ§¸¦ ¹þ¾î³ª°Å³ª Á×À¸¸é
+            else  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³ªï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
-                // ´Ù½Ã, idle ·Î ÀüÈ¯
+                // ï¿½Ù½ï¿½, idle ï¿½ï¿½ ï¿½ï¿½È¯
                 _anim.SetBool("attack", false);
             }
         }

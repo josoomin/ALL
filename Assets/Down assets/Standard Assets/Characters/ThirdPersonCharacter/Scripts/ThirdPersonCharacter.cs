@@ -227,9 +227,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
-		public void Attack()
-        {
-			m_Animator.SetTrigger("attack");
-        }
+		
 	}
 }
