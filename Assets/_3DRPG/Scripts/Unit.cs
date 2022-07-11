@@ -8,7 +8,6 @@ namespace RPG3D
     {
         public float _maxHP = 100;
         public float _hp = 0;
-        public float _attackRange = 1.75f;
 
         // 공격 효과음
         public AudioSource _sound_attack;
