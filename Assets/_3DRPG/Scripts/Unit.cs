@@ -31,6 +31,17 @@ namespace RPG3D
                 }
             }
 
+            if (this is Slime)
+            {
+                _attackCol = transform.Find("Body/AttackCol").GetComponent<BoxCollider>();
+
+                if (_attackCol != null)
+                {
+                    // 시작할때 공격충돌체 꺼주기
+                    _attackCol.enabled = false;
+                }
+            }
+
             //체력 초기화
             _hp = _maxHP;
         }
@@ -57,7 +68,7 @@ namespace RPG3D
 
                 if (_hp <= 0)
                 {
-                    Destroy(gameObject);
+                    m_Animater.SetTrigger("die");
                 }
             }
         }
@@ -99,6 +110,11 @@ namespace RPG3D
             {
                 _sound_attack.Play();
             }
+        }
+
+        public void Die(int on)
+        {
+            Destroy(gameObject);
         }
 
         #endregion
