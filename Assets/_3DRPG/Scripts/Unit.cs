@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RPG3D
 {
@@ -8,6 +9,7 @@ namespace RPG3D
     {
         public float _maxHP = 100;
         public float _hp = 0;
+
 
         // 공격 효과음
         public AudioSource _sound_attack;
@@ -18,6 +20,8 @@ namespace RPG3D
         
         void Start()
         {
+
+
             m_Animater = GetComponent<Animator>();
 
             if (this is Knight)

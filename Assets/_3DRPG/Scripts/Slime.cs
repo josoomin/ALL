@@ -27,6 +27,7 @@ namespace RPG3D
 
             if (distance < _attackRange /* && _hp > 0 */) 
             {
+                if(m_Animater != null)
                 m_Animater.SetTrigger("attack");
 
                 //적을 바라보게 하기
