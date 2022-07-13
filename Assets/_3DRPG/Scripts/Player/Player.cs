@@ -5,9 +5,10 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace RPG3D
 {
-    public class Knight : Unit
+    public class Player : Unit
     {
-        private void Update()
+
+        void Update()
         {
             if (CrossPlatformInputManager.GetButtonDown("Fire1")) // Fire1 : 조이패드 파이어 버튼, 키보드 왼쪽콘트롤버튼, 마우스 왼쪽버튼
             {
