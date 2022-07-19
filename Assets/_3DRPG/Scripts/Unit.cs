@@ -18,10 +18,8 @@ namespace RPG3D
         protected Animator m_Animater;
         BoxCollider _attackCol;
         
-        void Start()
+        protected virtual void Start()
         {
-
-
             m_Animater = GetComponent<Animator>();
 
             if (this is Knight)

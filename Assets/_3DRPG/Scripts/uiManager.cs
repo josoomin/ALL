@@ -22,11 +22,11 @@ namespace RPG3D
             if (Input.GetKeyDown(KeyCode.C))
             {
                 //열려있으면 닫고
-                //if (ui_state.activeSelf == true)
-                //    ui_state.SetActive(false);
+                if (ui_state.activeSelf == true)
+                    ui_state.SetActive(false);
 
                 //닫혀있으면 열고
-                if (ui_state.activeSelf == false)
+                else if (ui_state.activeSelf == false)
                     ui_state.SetActive(true);
             } 
         }
@@ -44,6 +44,14 @@ namespace RPG3D
         public void Optionvclose()
         {
             ui_option.SetActive(false);
+        }
+
+        public void OnButtonStatePoint(GameObject buttonObj)
+        {
+            Debug.Log("-------------------Stat Points Button-------------------");
+            Debug.Log(buttonObj.transform.parent.gameObject.name);  // 스탯 종류
+            Image img = buttonObj.GetComponent<Image>();
+            Debug.Log(img.sprite.name); // 버튼 종류(증가, 감소)
         }
     }
 }
