@@ -10,6 +10,7 @@ namespace RPG3D
         public float _maxHP = 100;
         public float _hp = 0;
 
+        public Image _hpBar;
 
         // 공격 효과음
         public AudioSource _sound_attack;
@@ -63,15 +64,20 @@ namespace RPG3D
             {
                 Debug.Log("슬라임이 " + other.gameObject.name + "과(와) 충돌");
 
-                if (m_Animater != null)
-                    m_Animater.SetTrigger("hit");
+                ProcessHit(10);
+            }
+        }
 
-                _hp -= 10;
+        protected virtual void ProcessHit(int Damage)
+        {
+            _hp -= Damage;
 
-                if (_hp <= 0)
-                {
-                    m_Animater.SetTrigger("die");
-                }
+            if (m_Animater != null)
+                m_Animater.SetTrigger("hit");
+
+            if (_hp <= 0)
+            {
+                m_Animater.SetTrigger("die");
             }
         }
 
