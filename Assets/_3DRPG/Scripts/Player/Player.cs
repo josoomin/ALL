@@ -25,19 +25,16 @@ namespace RPG3D
 
         public uiManager _uiMgr;
 
-
-
         [Header("---------스 탯 ---------")]
         public PlayerStat _stat;
 
-
         public AnimationCurve _expCurve; //유니티에서 제공하는 곡선 그래프
-        public int _maxLevel;
-        public int _level;
+        public int _maxLevel = 100;
+        public int _level = 1;
 
-        public long _maxExp;
+        public long _maxExp = 100000000;
         public long _exp;
-
+        public long _requiredExp;
 
 
         protected override void Start()
@@ -85,6 +82,13 @@ namespace RPG3D
 
         void Update()
         {
+            int nextLevel = _level + 1;
+
+            float expRatio = _expCurve.Evaluate((float)_level / (float)_maxLevel); // 커브에서 x축의 위치를 넣어주면 y축의 위치를 넣어줌
+
+            //다음 레벨로 가기 위한 경험치
+            _requiredExp = (long)(_maxExp * expRatio);
+
             if (CrossPlatformInputManager.GetButtonDown("Fire1")) // Fire1 : 조이패드 파이어 버튼, 키보드 왼쪽콘트롤버튼, 마우스 왼쪽버튼
             {
                 // 공격!!
