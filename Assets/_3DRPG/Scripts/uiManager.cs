@@ -13,6 +13,9 @@ namespace RPG3D
         public TextMeshProUGUI _AGT;
         public TextMeshProUGUI _ATK;
         public TextMeshProUGUI _DEF;
+        public TextMeshProUGUI _txtLevel;
+        public TextMeshProUGUI _txtExp;
+        public Image _expBar;
 
         GameObject ui_state;
         GameObject ui_option;
@@ -23,6 +26,10 @@ namespace RPG3D
             ui_state.SetActive(false);
             ui_option = transform.Find("Option").gameObject;
             ui_option.SetActive(false);
+
+            _txtLevel = transform.Find("statusUI/Level/_txtLevel").gameObject.GetComponent<TextMeshProUGUI>();
+            _txtExp = transform.Find("statusUI/_txtExp").gameObject.GetComponent<TextMeshProUGUI>();
+            _expBar = transform.Find("statusUI/exp/_expBar").gameObject.GetComponent<Image>();
         }
 
         void Update()
@@ -38,6 +45,15 @@ namespace RPG3D
                     ui_state.SetActive(true);
             }
 
+            RefreshStat();
+        }
+
+        public void RefreshStat()
+        {
+            _txtLevel.text = _player._level.ToString();
+            _txtExp.text = string.Format("{0} / {1}", _player._exp, _player._requiredExp);
+            _expBar.fillAmount = (float)_player._exp / (float)_player._requiredExp;
+
             _STR.text = _player._stat._STR.ToString();
             _MAG.text = _player._stat._MAG.ToString();
             _AGT.text = _player._stat._AGT.ToString();
@@ -45,7 +61,7 @@ namespace RPG3D
             _DEF.text = _player._stat._DEF.ToString();
         }
 
-        public void Stateclose()
+            public void Stateclose()
         {
             ui_state.SetActive(false);
         }

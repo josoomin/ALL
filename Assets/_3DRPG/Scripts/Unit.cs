@@ -62,13 +62,26 @@ namespace RPG3D
 
             if (other.gameObject.tag == "AttackCol")
             {
-                Debug.Log("슬라임이 " + other.gameObject.name + "과(와) 충돌");
+                Debug.Log("attacker weapon : " + other.gameObject.name);
+                Debug.Log("attacker" + other.transform.parent.parent.gameObject.name);
+                
+                // 어태커 정보 가져오기
+                Unit attacker = other.transform.parent.parent.GetComponent<Unit>();
+                if (attacker == null)
+                {
+                    //플레이어가 아닌 몬스터 등이 공격한 경우
+                }
+                else
+                {
+                    //플레이어가 공격한 경우
+                }
 
-                ProcessHit(10);
+
+                ProcessHit(10, attacker);
             }
         }
 
-        protected virtual void ProcessHit(int Damage)
+        protected virtual void ProcessHit(int Damage, Unit attacker)
         {
             _hp -= Damage;
 
@@ -77,8 +90,24 @@ namespace RPG3D
 
             if (_hp <= 0)
             {
-                m_Animater.SetTrigger("die");
+                Die(attacker);
             }
+        }
+
+        void Die(Unit attacker)
+        {
+            if(attacker is Player)
+            {
+                // 경험치를 준다.
+                Player player = attacker as Player;
+                player.AddExp(1000);
+            }
+            else
+            {
+                // 경험치를 줄 필요 없음.
+            }
+
+            m_Animater.SetTrigger("die");
         }
 
         protected void Attack()
@@ -93,7 +122,6 @@ namespace RPG3D
             //    _sound_attack.Play();
             //}
         }
-
         #region ANIMATION_EVENT
 
         public void SetAttackCol(int on) // 1 - on, 0 - off

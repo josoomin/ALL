@@ -43,6 +43,11 @@ namespace RPG3D
 
             _chatecter = GetComponent<ThirdPersonCharacter>();
 
+            InitStart();
+        }
+
+        void InitStart()
+        {
             if (PlayerPrefs.HasKey("STAT_STRENGTH")) //이미 스탯 랜덤 결정을 한 적이 있음
             {
                 _stat._STR = PlayerPrefs.GetInt("STAT_STRENGTH");
@@ -72,22 +77,27 @@ namespace RPG3D
             PlayerPrefs.SetInt("STAT_DEFENSE", _stat._DEF);
         }
 
-
-        protected override void ProcessHit(int Damage)
+        public void AddExp(int exp)
         {
-            base.ProcessHit(Damage);
+            _exp += exp;
+            _uiMgr.RefreshStat();
+        }
+
+        protected override void ProcessHit(int Damage, Unit attacker)
+        {
+            base.ProcessHit(Damage, attacker);
 
             // 추가코드
         }
 
         void Update()
         {
-            int nextLevel = _level + 1;
+            //int nextLevel = _level + 1;
 
-            float expRatio = _expCurve.Evaluate((float)_level / (float)_maxLevel); // 커브에서 x축의 위치를 넣어주면 y축의 위치를 넣어줌
+            //float expRatio = _expCurve.Evaluate((float)_level / (float)_maxLevel); // 커브에서 x축의 위치를 넣어주면 y축의 위치를 넣어줌
 
-            //다음 레벨로 가기 위한 경험치
-            _requiredExp = (long)(_maxExp * expRatio);
+            ////다음 레벨로 가기 위한 경험치
+            //_requiredExp = (long)(_maxExp * expRatio);
 
             if (CrossPlatformInputManager.GetButtonDown("Fire1")) // Fire1 : 조이패드 파이어 버튼, 키보드 왼쪽콘트롤버튼, 마우스 왼쪽버튼
             {
@@ -98,6 +108,5 @@ namespace RPG3D
             _hpBar.fillAmount = _hp / _maxHP;
 
         }
-
     }
 }
