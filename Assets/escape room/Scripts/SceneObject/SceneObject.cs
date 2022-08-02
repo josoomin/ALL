@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 namespace roomescape
 {
-    public class BookShelves : MonoBehaviour
-    {
+public class SceneObject : MonoBehaviour
+{
         public RectTransform _infoTextTrans;
         public Vector3 _infoTextOffset;
-        public string _infoText = "√•¿Â"; 
+        public string _infoText = "";
 
         void Start()
         {
@@ -28,7 +28,6 @@ namespace roomescape
             _infoTextTrans.gameObject.SetActive(true);
             Text text = _infoTextTrans.GetComponent<Text>();
             text.text = _infoText;
-
         }
 
         private void OnMouseExit()
