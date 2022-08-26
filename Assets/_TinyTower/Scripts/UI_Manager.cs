@@ -31,12 +31,12 @@ namespace TinyTower
 
         }
 
-        void Refresh_Gold_UI()
+        public void Refresh_Gold_UI()
         {
             _goldTxt.text = UserData.I.Gold.ToString();
         }
 
-        void Refresh_Person_UI()
+        public void Refresh_Person_UI()
         {
             _personTxt.text = UserData.I.Person.ToString();
         }
