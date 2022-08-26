@@ -72,7 +72,11 @@ namespace TinyTower
 
         public void CheatMoney()
         {
-            _gold += Common.INITIAL_GOLD;
+            _gold += 10000;
+
+            PlayerPrefs.SetInt(KEY_GOLD, _gold);
+
+            UI_Manager.I.Refresh_Gold_UI();
         }
     }
 }
