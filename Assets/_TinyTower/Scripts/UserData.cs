@@ -17,6 +17,12 @@ namespace TinyTower
         [SerializeField] int _gold = 0;
         [SerializeField] int _person = 0;
         [SerializeField] string _floorList;
+
+        public string FloorList
+        {
+            get { return _floorList; }
+        }
+
         public int Gold //프로퍼티
         {
             get { return _gold; } // 읽기
@@ -36,6 +42,7 @@ namespace TinyTower
 
         public void Init()
         {
+            #region LOAD GOLD
             // 앱을 처음 실행하는 것이라면, 자금을 주고 시작
             if (PlayerPrefs.HasKey(KEY_GOLD) == false)
             {
@@ -43,13 +50,20 @@ namespace TinyTower
             }
 
             _gold = PlayerPrefs.GetInt(KEY_GOLD);
+            #endregion
 
+            #region LOAD PERSON
             if (PlayerPrefs.HasKey(KEY_PERSON) == false)
             {
                 PlayerPrefs.SetInt(KEY_PERSON, INITIAL_PERSON);
             }
 
             _person = PlayerPrefs.GetInt(KEY_PERSON);
+            #endregion
+
+            #region LOAD FLOOR
+            LoadFloor();
+            #endregion
         }
 
         public void UseGold(int cost, callback cb)
@@ -101,6 +115,14 @@ namespace TinyTower
                 _floorList = floorName;
                  
                 PlayerPrefs.SetString(KEY_FLOOR_LIST, floorName);
+            }
+        }
+
+        void LoadFloor()
+        {
+            if (PlayerPrefs.HasKey(KEY_FLOOR_LIST))
+            {
+                _floorList = PlayerPrefs.GetString(KEY_FLOOR_LIST);
             }
         }
     }
