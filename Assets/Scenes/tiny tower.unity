@@ -1891,7 +1891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6780639697081248982, guid: 331a123c2d398b2408c9ee08fc3c65bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.79
+      value: 34.063786
       objectReference: {fileID: 0}
     - target: {fileID: -6780639697081248982, guid: 331a123c2d398b2408c9ee08fc3c65bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1936,6 +1936,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 331a123c2d398b2408c9ee08fc3c65bc, type: 3}
       propertyPath: m_Name
       value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038139073592891626, guid: 331a123c2d398b2408c9ee08fc3c65bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 54.9
       objectReference: {fileID: 0}
     - target: {fileID: 7038139073592891626, guid: 331a123c2d398b2408c9ee08fc3c65bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2019,6 +2023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gold: 0
   _person: 0
+  _floorList: 
 --- !u!4 &1624363132
 Transform:
   m_ObjectHideFlags: 0
@@ -2336,6 +2341,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0dd14404c895a48b0a7cf43896f34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _floorList: []
+  _templates:
+  - {fileID: 1807632982}
+  - {fileID: 87192032}
 --- !u!4 &2003265736
 Transform:
   m_ObjectHideFlags: 0
@@ -2508,7 +2517,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14301bf98165c84d8e8ab2279acb166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floorMgrObj: {fileID: 0}
-  _templates:
-  - {fileID: 1807632982}
-  - {fileID: 87192032}
