@@ -25,14 +25,14 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rigidbody¸¦ °Çµå·Á¼­ ¾ÕÀ¸·Î ÀÌµ¿
+        //rigidbodyï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 
-        // 1.rigidbody.ADDForce ÇÔ¼öÈ£ Èû(°¡¼Óµµ)À» ÁÖ¾î¼­ ÀÌµ¿ - °¡¼Óµµ ¿îµ¿ 
+        // 1.rigidbody.ADDForce ï¿½Ô¼ï¿½È£ ï¿½ï¿½(ï¿½ï¿½ï¿½Óµï¿½)ï¿½ï¿½ ï¿½Ö¾î¼­ ï¿½Ìµï¿½ - ï¿½ï¿½ï¿½Óµï¿½ ï¿½îµ¿ 
         // _rigid.AddForce(new Vector2(10, 0));
 
-        // 2.rigidbody.velocity º¯¼ö(xÃà¸¸)¸¦ Á÷Á¢ °Çµå¸®´Â ¹æ¹ý - µî¼Óµµ ¿îµ¿
+        // 2.rigidbody.velocity ï¿½ï¿½ï¿½ï¿½(xï¿½à¸¸)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Çµå¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½Óµï¿½ ï¿½îµ¿
         Vector2 vel = _rigid.velocity;
-        vel.x = _speed;//xÃà ¼Óµµ¸¸ °­Á¦
+        vel.x = _speed;//xï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         if (_renderer.flipX == true)
             vel.x = -1.0f * _speed;
@@ -41,28 +41,28 @@ public class Unit : MonoBehaviour
 
         if (_enemyObj != null)
         {
-            //°Å¸® Ã¼Å© ÇÔ¼ö È£Ãâ
+            //ï¿½Å¸ï¿½ Ã¼Å© ï¿½Ô¼ï¿½ È£ï¿½ï¿½
             CheckDistance();
         }
     }
 
-    void CheckDistance() // °Å¸®¸¦ Ã¼Å©ÇÏ´Â ÇÔ¼ö
+    void CheckDistance() // ï¿½Å¸ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     {
-        // ³ª¿Í Àû Ä³¸¯ÅÍ°£ÀÇ °Å¸®¸¦ °è»êÇØ¼­, ¼³Á¤µÈ °ø°Ý¹üÀ§ ¾È¿¡ µé¾î¿À¸é °ø°Ý
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        float pos1 = transform.position.x; // ³ªÀÇ À§Ä¡
-        float pos2 = _enemyObj.transform.position.x; // ÀûÀÇ À§Ä¡
+        float pos1 = transform.position.x; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+        float pos2 = _enemyObj.transform.position.x; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
-        float distance = Mathf.Abs(pos1 - pos2); // µÎ Ä³¸¯ÅÍ °£ÀÇ °Å¸® (µÎ xÁÂÇ¥ »çÀÌÀÇ °Å¸®)
+        float distance = Mathf.Abs(pos1 - pos2); // ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ (ï¿½ï¿½ xï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½)
 
-        if (distance < _attackRange) // °ø°Ý¹üÀ§ ¾È¿¡ µé¾î¿À¸é
+        if (distance < _attackRange) // ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            //°ø°Ý
+            //ï¿½ï¿½ï¿½ï¿½
             _anim.SetBool("attack", true);
         }
         else
         {
-            // ´Ù½Ã, idle ·Î ÀüÈ¯
+            // ï¿½Ù½ï¿½, idle ï¿½ï¿½ ï¿½ï¿½È¯
             _anim.SetBool("attack", false);
         }
     }

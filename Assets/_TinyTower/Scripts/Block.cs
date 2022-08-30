@@ -28,20 +28,7 @@ namespace TinyTower
 
                 GameObject template = _templates[choice];
 
-                GameObject obj = Instantiate(template);
-                obj.SetActive(true);
-
-                // 1. 현재 층 알아오기
-                //int floor = (int)(transform.position.y / HEIGHT) + 1;
-
-                //생성된 매장 오브젝트가 이 현재 층이 되도록 위치 설정
-                // y위치 = (n층 - 1) * 층 높이(5m)
-                //float yPos = (floor - 1) * HEIGHT;
-
-                //Vector3 pos = obj.transform.position;
-                //obj.transform.position = new Vector3(pos.x, yPos, pos.z);
-                obj.transform.position = transform.position;
-                obj.transform.parent = FloorManager.I.transform; // 플로어 매니저의 자식개체로 이동
+                FloorManager.I.Create(template, transform.position);
 
                 // 이 블록은 이제 한 층 위로 올려주기
                 Vector3 blockPos = transform.position;

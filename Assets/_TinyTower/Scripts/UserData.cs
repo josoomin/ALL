@@ -10,11 +10,13 @@ namespace TinyTower
     {
         const string KEY_GOLD = "user_data_gold";
         const string KEY_PERSON = "user_data_person";
+        const string KEY_FLOOR_LIST = "user_data_floor_List";
 
         const int INITIAL_PERSON = 10; // 초기 인구
 
         [SerializeField] int _gold = 0;
         [SerializeField] int _person = 0;
+        [SerializeField] string _floorList;
         public int Gold //프로퍼티
         {
             get { return _gold; } // 읽기
@@ -81,6 +83,25 @@ namespace TinyTower
             // 결과를 알려주도록 콜백함수 호출
             if(cb != null)
             cb(true);
+        }
+
+        public void SaveFloor(string floorName)
+        {
+            if(PlayerPrefs.HasKey(KEY_FLOOR_LIST)) //이미 저장된 floor 정보가 있다면 
+            {
+                //콤마(,)로 이어붙이기 한다.
+                _floorList = PlayerPrefs.GetString(KEY_FLOOR_LIST);
+
+                _floorList += ", " + floorName;
+
+                PlayerPrefs.SetString(KEY_FLOOR_LIST, _floorList);
+            }
+            else // 처음 저장하는 것이라면
+            {
+                _floorList = floorName;
+                 
+                PlayerPrefs.SetString(KEY_FLOOR_LIST, floorName);
+            }
         }
     }
 }
