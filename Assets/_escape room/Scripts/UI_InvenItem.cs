@@ -10,6 +10,7 @@ namespace roomescape
         public Text _itemNameTxt; 
 
 
+
         void Start()
         {
             _itemNameTxt = transform.Find("itemNameTxt").GetComponent<Text>();
@@ -20,8 +21,8 @@ namespace roomescape
 
         }
 
-        // È¹µæµÈ ¾ÆÀÌÅÛ Á¤º¸¸¦ ¹Þ¾Æ¼­
-        // ±× Á¤º¸´ë·Î, ÀÌ¸§, ¾ÆÀÌÄÜ, ¼ö·® Ç¥½Ã
+        // È¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
         public void SetInfo(string itemName)
         {
             _itemNameTxt.text = itemName;

@@ -18,7 +18,6 @@ namespace TinyTower
         }
         public void Init()
         {
-
             //플로어 로딩
             string floorList = UserData.I.FloorList;
 

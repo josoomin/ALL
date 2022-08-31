@@ -19,7 +19,6 @@ namespace TinyTower
 
         public void Init()
         {
-
             _goldTxt = transform.Find("UI_Topbar/gold/goldTxt").GetComponent<Text>();
             _personTxt = transform.Find("UI_Topbar/population/personcount").GetComponent<Text>();
 
@@ -28,7 +27,6 @@ namespace TinyTower
 
             // 사람 UI 리프레시
             Refresh_Person_UI();
-
         }
 
         public void Refresh_Gold_UI()
