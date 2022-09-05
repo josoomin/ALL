@@ -7,7 +7,7 @@ namespace TinyTower
 {
     public class UI_Manager : MonoBehaviour
     {
-        Text _goldTxt;
+        public Text _goldTxt;
         Text _personTxt;
 
         public static UI_Manager I; // I는 싱글톤 인스턴스를 의미

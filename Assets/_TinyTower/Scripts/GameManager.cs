@@ -1,14 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace TinyTower
 {
-public class GameManager : MonoBehaviour
-{
-
-    void Start()
+    public class GameManager : MonoBehaviour
     {
+
+        void Start()
+        {
             //유저 데이터 초기화
             UserData.I.Init();
 
@@ -17,11 +18,17 @@ public class GameManager : MonoBehaviour
 
             // UI매니저 초기화
             UI_Manager.I.Init();
-    }
+        }
 
-    void Update()
-    {
-        
+        void Update()
+        {
+
+        }
+
+        private void OnApplicationQuit()
+        {
+            string stopTime = DateTime.Now.ToString();
+            PlayerPrefs.SetString("game_stop_time", stopTime);
+        }
     }
-}
 }

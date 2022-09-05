@@ -86,13 +86,16 @@ namespace TinyTower
             }
         }
 
-        public void AddGold(int gold, callback cb = null)
+        public void AddGold(int gold, callback cb = null, bool refreshUI = true)
         {
             _gold += gold;
 
             PlayerPrefs.SetInt(KEY_GOLD, _gold);
 
             UI_Manager.I.Refresh_Gold_UI();
+
+            if (refreshUI)
+                UI_Manager.I.Refresh_Gold_UI();
 
             // 결과를 알려주도록 콜백함수 호출
             if(cb != null)

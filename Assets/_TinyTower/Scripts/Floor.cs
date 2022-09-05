@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,30 +20,49 @@ namespace TinyTower
     public class Floor : MonoBehaviour
     {
         public FloorType _type;
+        public int _income = 1; // 단위 시간당 수입
+        public float _time = 1.0f; // 단위 시간
 
-        private float _timeleft = 1.0f;
-        private float _nextTime = 0.0f;
+        private float _elapsed = 0.0f; // 경과시간
+
+        [SerializeField] private string _stopTime = "";
 
         public GameObject _Information;
 
         public void Init()
         {
-            _Information.SetActive(false);
+            if (PlayerPrefs.HasKey("game_stop_time"))
+            {
+                string lastGameTime = PlayerPrefs.GetString("game_stop_time");
+
+                DateTime now = DateTime.Now;
+
+                DateTime stopTime = DateTime.Parse(lastGameTime);
+
+                TimeSpan span = now - stopTime;
+                int incomeTotal = (int)(span.TotalSeconds / _time * _income);
+
+                bool uiRefresh = false;
+                UserData.I.AddGold(incomeTotal, null, uiRefresh);
+            }
         }
 
-        public void Update()
+        void Update()
         {
-            CollectGold();
+            //_elapsed = _elapsed + Time.deltaTime;
+            _elapsed += Time.deltaTime;
+
+            if (_elapsed > _time)
+            {
+                CollectGold(); //1초마다 호출이 됨
+                _elapsed = 0.0f;
+            }
         }
 
         public void CollectGold()
         {
-            // 테스트 코드: 1초마다 1골드 수입 증가하는 루틴
-            if (Time.time > _nextTime)
-            {
-                _nextTime = Time.time + _timeleft;
-                UserData.I.AddGold(1);
-            }
+                // 골드 1증가
+                UserData.I.AddGold(_income);
         }
 
         public void ShowInfo()
