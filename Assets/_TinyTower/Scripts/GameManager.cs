@@ -10,6 +10,9 @@ namespace TinyTower
 
         void Start()
         {
+            //게임 데이터 초기화
+            GameData.I.Init();
+
             //유저 데이터 초기화
             UserData.I.Init();
 

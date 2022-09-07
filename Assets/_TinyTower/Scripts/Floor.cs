@@ -65,23 +65,17 @@ namespace TinyTower
                 UserData.I.AddGold(_income);
         }
 
-        public void ShowInfo()
+        public void ShowInfo() //stub 코드 (설계용 코드)
         {
             //이 상점의 정보를 표시
-            if(Input.GetMouseButton(0))
-            {
-                Invoke("Open", 2.0f);
-            }
-        }
 
-        public void Open()
-        {
-            _Information.SetActive(true);
-        }
+            // 이름
+            // 업종 (타입)
+            // 종업원
+            // 고객의 수
+            // 단위 시간당 수익
 
-        public void Close()
-        {
-            _Information.SetActive(false);
+            // 상품 목록
         }
 
         void OnMouseDown()
