@@ -22,10 +22,10 @@ namespace TinyTower
 
         public void Init()
         {
-            init_ProductData();
+            Init_ProductData();
         }
 
-        void init_ProductData()
+        void Init_ProductData()
         {
             string text = _product_csv.text;
 

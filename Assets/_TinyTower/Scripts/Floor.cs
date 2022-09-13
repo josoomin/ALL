@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace TinyTower
 {
-
     public enum FloorType
     {
         RESIDENTIAL, //주거
@@ -20,6 +19,7 @@ namespace TinyTower
     public class Floor : MonoBehaviour
     {
         public FloorType _type;
+
         public int _income = 1; // 단위 시간당 수입
         public float _time = 1.0f; // 단위 시간
 
@@ -67,6 +67,8 @@ namespace TinyTower
 
         public void ShowInfo() //stub 코드 (설계용 코드)
         {
+            // UI_Manager.I._ui_info_floor.SetActive(true);
+
             //이 상점의 정보를 표시
 
             // 이름
@@ -76,6 +78,30 @@ namespace TinyTower
             // 단위 시간당 수익
 
             // 상품 목록
+        }
+
+        void OnMouseUp()
+        {
+            List<GameData_Product> dataList = new List<GameData_Product>();
+
+            //foreach(GameData_Product data in GameData.I._Product_dataList)
+            for(int i = 0; i < GameData.I._Product_dataList.Count; i++)
+            {
+                GameData_Product data = GameData.I._Product_dataList[i];
+
+                if(data.floor == gameObject.name)
+                {
+                    dataList.Add(data);
+                }
+            }
+
+            UI_Manager.I._ui_info_floor.ShowInfo(dataList);
+
+            // 팝업 띄우기
+
+            //if (UI_Manager.I.UI_Touched()) return;
+
+            // StartCoroutine(_OnMouseUp());
         }
 
         void OnMouseDown()

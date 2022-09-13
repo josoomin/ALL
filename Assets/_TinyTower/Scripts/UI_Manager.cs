@@ -9,6 +9,8 @@ namespace TinyTower
     {
         public Text _goldTxt;
         Text _personTxt;
+        GraphicRaycaster _raycaster;
+        public UI_Info_Floor _ui_info_floor;
 
         public static UI_Manager I; // I는 싱글톤 인스턴스를 의미
 
@@ -19,6 +21,11 @@ namespace TinyTower
 
         public void Init()
         {
+            _raycaster = GetComponent<GraphicRaycaster>();
+
+            _ui_info_floor = transform.Find("Information").GetComponent<UI_Info_Floor>();
+            _ui_info_floor.gameObject.SetActive(false);
+
             //_goldTxt = transform.Find("UI_Topbar/gold/goldTxt").GetComponent<Text>();
             _personTxt = transform.Find("UI_Topbar/population/personcount").GetComponent<Text>();
 
