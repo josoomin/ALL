@@ -14,5 +14,8 @@ namespace TinyTower
         public int cost;
         public float time;
         public int quantity;
+        public string sprit;
+
+        public Sprite spriting;
     }
 }

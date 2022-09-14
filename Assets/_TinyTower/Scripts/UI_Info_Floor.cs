@@ -25,6 +25,29 @@ namespace TinyTower
             _product2.ShowInfo(productDataList[1]);
             //3번 제품 정보
             _product3.ShowInfo(productDataList[2]);
+
+            StartCoroutine(_Play());
+        }
+
+        IEnumerator _Play() //팝업창이 열릴 때 연출 
+        {
+            //스케일을 0.5에서 1로 커지는 연출
+
+            Vector3 startScale = new Vector3(0.5f, 0.5f, 0.5f);
+            Vector3 targetScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+            transform.localScale = startScale;
+
+            float speed = 10.0f;
+
+            while(true)
+            {
+                transform.localScale = Vector3.MoveTowards(startScale, targetScale, Time.deltaTime * speed);
+
+                startScale = transform.localScale;
+
+                yield return null;
+            }
         }
 
         public void Close()

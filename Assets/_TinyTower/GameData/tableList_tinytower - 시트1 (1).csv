@@ -1,0 +1,10 @@
+name,floor,cost,time,quantity,sprit
+아메리카노,coffee_shop,100,15,1500,coffee_americano
+카페 라떼,coffee_shop,120,15,1200,coffee_cafelatte
+카푸치노,coffee_shop,150,15,1000,coffee_capuccino
+새우 초밥,sushi_bar,150,20,2000,sushi_shirimp
+연어 초밥,sushi_bar,180,20,1500,sushi_salmon
+참치 초밥,sushi_bar,200,20,1000,sushi_tuna
+토마토 스파게티,che_pasta,150,25,1600,pasta_tomato
+크림 파스타,che_pasta,180,25,1300,pasta_cream
+까르보나라,che_pasta,200,25,800,pasta_carbonara

@@ -61,8 +61,8 @@ namespace TinyTower
 
         public void CollectGold()
         {
-                // 골드 1증가
-                UserData.I.AddGold(_income);
+            // 골드 1증가
+            UserData.I.AddGold(_income);
         }
 
         public void ShowInfo() //stub 코드 (설계용 코드)

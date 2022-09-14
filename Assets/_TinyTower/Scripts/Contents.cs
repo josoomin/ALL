@@ -11,6 +11,7 @@ namespace TinyTower
         public Text _costTxt;
         public Text _timeTxt;
         public Text _qtyTxt;
+        public Image _icon;
 
 public void ShowInfo(GameData_Product data)
         {
@@ -18,6 +19,7 @@ public void ShowInfo(GameData_Product data)
             _costTxt.text = data.cost.ToString();
             _timeTxt.text = data.time.ToString();
             _qtyTxt.text = data.quantity.ToString();
+            _icon.sprite = data.spriting;
         }
     }
 }

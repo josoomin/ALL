@@ -51,6 +51,11 @@ namespace TinyTower
                         temp.cost = Convert.ToInt32(record[2]);
                         temp.time = Convert.ToSingle(record[3]);
                         temp.quantity = Convert.ToInt32(record[4]);
+                        temp.sprit = record[5];
+
+                        // 스프라이트 이름을 가지고, 실제 스프라이트 이미지 로드
+                        Sprite spObj = Resources.Load<Sprite>(temp.sprit);
+                        temp.spriting = spObj;
 
                         // List에 하나를 집어넣을 때는 Add 함수 쓴다
                         _Product_dataList.Add(temp);
