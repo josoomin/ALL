@@ -33,7 +33,7 @@ namespace TinyTower
         {
             if (PlayerPrefs.HasKey("game_stop_time"))
             {
-                string lastGameTime = PlayerPrefs.GetString("game_stop_time");
+                /*string lastGameTime = PlayerPrefs.GetString("game_stop_time");
 
                 DateTime now = DateTime.Now;
 
@@ -43,20 +43,21 @@ namespace TinyTower
                 int incomeTotal = (int)(span.TotalSeconds / _time * _income);
 
                 bool uiRefresh = false;
-                UserData.I.AddGold(incomeTotal, null, uiRefresh);
+                UserData.I.AddGold(incomeTotal, null, uiRefresh);*/
             }
         }
 
         void Update()
         {
             //_elapsed = _elapsed + Time.deltaTime;
-            _elapsed += Time.deltaTime;
+            /*_elapsed += Time.deltaTime;
 
             if (_elapsed > _time)
             {
                 CollectGold(); //1초마다 호출이 됨
                 _elapsed = 0.0f;
             }
+            */
         }
 
         public void CollectGold()

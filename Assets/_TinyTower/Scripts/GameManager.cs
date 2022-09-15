@@ -19,8 +19,11 @@ namespace TinyTower
             //플로어 매니저 초기화
             FloorManager.I.Init();
 
-            // UI매니저 초기화
+            //UI매니저 초기화
             UI_Manager.I.Init();
+
+            //상품 정보 초기화
+            Contents.I.Init();
         }
 
         void Update()
