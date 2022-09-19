@@ -4,14 +4,16 @@ using UnityEngine;
 
 namespace PixelDungeon
 {
-public class Player : MonoBehaviour
+    public class Player : MonoBehaviour
     {
-        [SerializeField]float _speed = 1.0f;
+        [SerializeField] float _speed = 1.0f;
         Animator _anim;
+        SpriteRenderer _renderer;
 
         void Start()
         {
             _anim = GetComponent<Animator>();
+            _renderer = GetComponent<SpriteRenderer>();
         }
 
         void Update()
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
             if (_anim.GetBool("eating") == false) //먹는 동작(애니메이션)하고 있는 중이 아니라면....
             {
                 Move(h, v);
+                Flip(h);
             }
         }
 
@@ -42,6 +45,20 @@ public class Player : MonoBehaviour
 
             //이동
             transform.Translate(dir * _speed * Time.deltaTime);
+        }
+
+        void Flip(float h)
+        {
+            if (h < 0)
+            {
+                //좌
+                _renderer.flipX = true;
+            }
+            else if (h > 0)
+            {
+                //우
+                _renderer.flipX = false;
+            }
         }
     }
 }
