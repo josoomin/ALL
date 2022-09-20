@@ -6,17 +6,31 @@ namespace PixelDungeon
 {
     public class Player : MonoBehaviour
     {
+        public static Player I;
+
+        [SerializeField] int _floor = 1;
+        public int Floor { get { return _floor; } }
+
         [SerializeField] float _speed = 1.0f;
         Animator _anim;
         SpriteRenderer _renderer;
+        Rigidbody2D _rigid;
+
+        bool _doingWARP = false;
+
+        void Awake()
+        {
+            I = this;    
+        }
 
         void Start()
         {
             _anim = GetComponent<Animator>();
             _renderer = GetComponent<SpriteRenderer>();
+            _rigid = GetComponent<Rigidbody2D>();
         }
 
-        void Update()
+        void FixedUpdate()
         {
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
@@ -44,7 +58,11 @@ namespace PixelDungeon
             // 이동 거리 = 방향벡터 * 스피드
 
             //이동
-            transform.Translate(dir * _speed * Time.deltaTime);
+            //transform.Translate(dir * _speed * Time.deltaTime);
+            if (_doingWARP == false)
+                _rigid.velocity = dir * _speed * Time.fixedDeltaTime;
+            else
+                _rigid.velocity = Vector2.zero;
         }
 
         void Flip(float h)
@@ -60,5 +78,62 @@ namespace PixelDungeon
                 _renderer.flipX = false;
             }
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Debug.Log("트리거 이벤트! : " + collision.gameObject.name);
+
+            Stair stair = collision.gameObject.GetComponent<Stair>();
+            if (stair != null) // 트리거 오브젝트가 계단인 경우
+            {
+                // 방금 막 이동된 경우는 워프 안함 return
+                if (_doingWARP == true) return;
+
+                // 플레이어를 다음 목적지로 워프 시켜주기
+                if (stair._destObj != null)
+                {
+                    transform.position = stair._destObj.transform.position;
+                    StartWARP();
+                }
+
+                if(stair._direction == StairDirection.DOWN)
+                {
+                    _floor++;
+                }
+                else if (stair._direction == StairDirection.UP)
+                {
+                    if (_floor == 1)
+                    {
+                        // TODO: 메시지창으로, 최상단 층임을 알리기 (나중에는 UI 디자인이 된 창으로)
+                        // (메시지: "현재는 던전을 벗어날 수 없습니다")
+
+                        PlatformDialog.Show(
+                            "안내",
+                            "현재는 던전을 벗어날 수 없습니다",
+                            PlatformDialog.Type.SubmitOnly,
+                            () => {
+                                Debug.Log("OK");
+                            },
+                            null
+                        );
+                    }
+                    else
+                    {
+                        _floor--;
+                    }
+                }
+            }
+        }
+
+        void StartWARP()
+        {
+            _doingWARP = true;
+            Invoke("StopWARP", 0.2f);
+        }
+        void StopWARP()
+        {
+            _doingWARP = false;
+        }
+        
     }
 }
