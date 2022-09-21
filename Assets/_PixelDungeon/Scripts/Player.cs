@@ -8,7 +8,7 @@ namespace PixelDungeon
     {
         public static Player I;
 
-        [SerializeField] int _floor = 1;
+        public int _floor = 1;
         public int Floor { get { return _floor; } }
 
         [SerializeField] float _speed = 1.0f;
@@ -99,6 +99,7 @@ namespace PixelDungeon
                 if(stair._direction == StairDirection.DOWN)
                 {
                     _floor++;
+                    UI_Manager.I.topBar.Refresh();
                 }
                 else if (stair._direction == StairDirection.UP)
                 {
@@ -120,6 +121,7 @@ namespace PixelDungeon
                     else
                     {
                         _floor--;
+                        UI_Manager.I.topBar.Refresh();
                     }
                 }
             }
@@ -127,13 +129,14 @@ namespace PixelDungeon
 
         void StartWARP()
         {
+            UI_Manager.I.screenBlock.Play();
             _doingWARP = true;
-            Invoke("StopWARP", 0.2f);
+            Invoke("StopWARP", 2.0f);
         }
         void StopWARP()
         {
             _doingWARP = false;
+            UI_Manager.I.screenBlock.Stop();
         }
-        
     }
 }
