@@ -12,7 +12,7 @@ namespace PixelDungeon
         public int Floor { get { return _floor; } }
 
         [SerializeField] float _speed = 1.0f;
-        SpriteRenderer _renderer;
+
         Rigidbody2D _rigid;
 
         bool _doingWARP = false;
@@ -26,7 +26,6 @@ namespace PixelDungeon
         {
             base.Start();
 
-            _renderer = GetComponent<SpriteRenderer>();
             _rigid = GetComponent<Rigidbody2D>();
         }
 

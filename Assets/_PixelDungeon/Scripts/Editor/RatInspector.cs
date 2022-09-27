@@ -22,7 +22,13 @@ namespace PixelDungeon
 
                 //치트
                 //플레이어의 체력을 깍아주기(테스트)
+                int damage = 10;
+
                 Player.I.DoDamage(10);
+
+                string formatStr = string.Format("{0}(이)가 {1}에게 {2}데미지를 입혔습니다",_rat.gameObject.name, Player.I.gameObject.name,damage);
+
+                UI_Manager.I.Gamelog.Play(formatStr);
             }
 
             base.OnInspectorGUI(); //원래의 변수들이 인스펙터에 보여짐
