@@ -4,9 +4,6 @@ using UnityEngine;
 
 namespace roomescape
 {
-    // Inventory ��ü�� ������ ����Ʈ�� Ȯ���ؼ�
-    // �״�� �κ��丮 UIȭ�鿡 �ѷ��ش�.
-
     public class UI_Inventory : MonoBehaviour
     {
         public List<UI_InvenItem> _itemList;
@@ -21,12 +18,8 @@ namespace roomescape
 
             UI_InvenItem[] array = GetComponentsInChildren<UI_InvenItem>();
 
-            //List�� ������(�迭)�� ������� ���� AddRange �Լ� ����
-            // (�� ���� ������� ���� Add�Լ�)
             _itemList.AddRange(array);
 
-            //Inventory ��ü�� _itemList�� Ȯ���ؼ�, �� �������
-            //UI_invenitem�� �������ش�.
             for(int i = 0; i < Inventory.I._itemList.Count; i++)
             {
                 string itemName = Inventory.I._itemList[i];

@@ -9,8 +9,6 @@ namespace roomescape
     {
         public Text _itemNameTxt; 
 
-
-
         void Start()
         {
             _itemNameTxt = transform.Find("itemNameTxt").GetComponent<Text>();
@@ -20,9 +18,6 @@ namespace roomescape
         {
 
         }
-
-        // ȹ��� ������ ������ �޾Ƽ�
-        // �� �������, �̸�, ������, ���� ǥ��
         public void SetInfo(string itemName)
         {
             _itemNameTxt.text = itemName;
