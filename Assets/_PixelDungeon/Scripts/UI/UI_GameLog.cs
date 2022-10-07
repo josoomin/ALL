@@ -14,7 +14,7 @@ public class UI_GameLog : MonoBehaviour
         void Start()
         {
             //_text = transform.Find("verticalLayout/Log").GetComponent<Text>();
-            _logObjecTemplate = transform.Find("verticalLayout/Log").gameObject;
+            _logObjecTemplate = transform.Find("BackGround/Log").gameObject;
             _logObjecTemplate.SetActive(false);
 
             //_text.enabled = false;
